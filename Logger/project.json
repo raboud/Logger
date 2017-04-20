@@ -1,0 +1,59 @@
+﻿{
+  "version": "1.0.0.0",
+  "authors": [ "Robert Raboud" ],
+  "title": "RandREng.Logger",
+  "name": "RandREng.Logger",
+  "description": "A universal logger",
+  "copyright": "2017 R & R Engineering, LLC",
+  "packOptions": {
+    "copyright": "2017 R & R Engineering, LLC",
+    "owners": [ "R & R Engineering, LLC" ],
+    "requireLicenseAcceptance": false,
+    "summary": "A universal logger",
+    "tags": [ "Logger", "Debugging", "Debugger Visualizers" ]
+  },
+  "runtimes": {
+    "win":  {}
+  },
+  "frameworks": {
+    "net461": {
+        "buildOptions": {
+          "define": [ "NET461", "RELEASE", "TRACE" ]
+        },
+        "frameworkAssemblies": {
+          "System.Net.Http": "4.0.0.0"
+        },
+        "dependencies": {
+        }
+    },
+    "netstandard1.6": {
+      "buildOptions": {
+        "define": [ "NETCORE", "RELEASE", "TRACE" ]
+      },
+      "imports": "dnxcore50",
+      "dependencies": {
+        "NETStandard.Library": "1.6.1",
+        "System.Net.NameResolution": "4.3.0",
+        "System.Net.NetworkInformation": "4.3.0",
+        "Microsoft.Extensions.Configuration": "1.1.0"
+      }
+    },
+    "net45": {
+      "buildOptions": {
+        "define": [ "NET45", "RELEASE", "TRACE" ]
+      },
+      "frameworkAssemblies": {
+        "System.Net.Http": "4.0.0.0"
+      },
+      "dependencies": {
+      }
+    }
+  },
+  "scripts": {
+    "postcompile": [
+      "dotnet pack --no-build --configuration %compile:Configuration%",
+      "nuget push \"%project:Directory%\\bin\\%compile:Configuration%\\%project:Name%.%project:Version%.nupkg\" -source F:/Code/LocalNuget/",
+      "nuget push \"%project:Directory%\\bin\\%compile:Configuration%\\%project:Name%.%project:Version%.symbols.nupkg\" -source F:/Code/LocalNuget/"
+    ]
+  }
+}

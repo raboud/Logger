@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RandREng.AngularLogin.Utilities.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LogLevel" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DEBUG</Value>
+    </Setting>
+    <Setting Name="LogLocation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\temp\</Value>
+    </Setting>
+    <Setting Name="LogFilename" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">fileName</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
