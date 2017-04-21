@@ -61,8 +61,9 @@ namespace RandREng.Utilities.Logging
                 }
 #if !NETCORE
                 sw.Close();
-#endif
+#else
                 sw.Dispose();
+#endif
             }
         }
 

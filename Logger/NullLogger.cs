@@ -18,7 +18,8 @@ namespace RandREng.Utilities.Logging
         public void Log(string Message)
         {
         }
-        List<LogEntry> ILogger.GetAndClearErrors()
+
+        public List<LogEntry> GetAndClearErrors()
         {
             return null;
         }

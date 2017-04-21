@@ -68,6 +68,7 @@ namespace RandREng.Utilities.Logging
                             }
                         }
                     }
+                    _timer.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
