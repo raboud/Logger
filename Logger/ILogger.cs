@@ -7,10 +7,8 @@ namespace RandREng.Utilities.Logging
     public interface ILogger : IDisposable
     {
 #region Properties
-        List<LogEntry> GetAndClearErrors();
         bool LoggingEnabled { get; set; }
         EnLogLevel LogLevel { get; set; }
-        bool BufferErrors { get; set; }
 #endregion
 
         void Log(EnLogLevel Level, string Message);

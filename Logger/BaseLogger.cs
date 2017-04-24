@@ -14,7 +14,6 @@ namespace RandREng.Utilities.Logging
         
         public BaseLogger()
         {
-            this.BufferErrors = false;
         }
         public void Log(string Message)
         {
@@ -67,17 +66,6 @@ namespace RandREng.Utilities.Logging
             Log(LineChar, Num);
         }
 
-        protected List<LogEntry> Errors
-        {
-            get
-            {
-                if (m_Errors == null)
-                {
-                    m_Errors = new List<LogEntry>();
-                }
-                return m_Errors;
-            }
-        }
 
         virtual protected bool LogReady
         {
@@ -122,34 +110,11 @@ namespace RandREng.Utilities.Logging
             }
         }
 
-        protected List<LogEntry> m_Errors;
-
-        public bool BufferErrors { get; set; }
-
-        public List<LogEntry> GetAndClearErrors()
-        {
-            List<LogEntry> TempErrors = new List<LogEntry>();
-            lock (syncRoot)
-            {
-                TempErrors.AddRange(this.Errors);
-                this.Errors.Clear();
-            }
-            return TempErrors;
-        }
 
         virtual protected void WriteLog(LogEntry entry)
         {
         }
 
-
-        protected void BufferError(LogEntry line)
-        {
-            // if this is a warning or worse, add it to our errors list so we can email it later
-            if (BufferErrors && (line.Level == EnLogLevel.ERROR || line.Level == EnLogLevel.EXCEPTION))
-            {
-                Errors.Add(line);
-            }
-        }
 
         #region IDisposable Support
         protected bool disposedValue = false; // To detect redundant calls

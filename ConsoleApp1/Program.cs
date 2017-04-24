@@ -15,12 +15,12 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-//            using (logger = new FileLogger(@"c:\temp\", "test"))
-            using (logger = new ConsoleLogger())
+            using (logger = new FileLogger(@"c:\temp\", "test"))
+//            using (logger = new ConsoleLogger())
             {
                 // Create a timer and set a two second interval.
                 aTimer = new System.Timers.Timer();
-                aTimer.Interval = 2000;
+                aTimer.Interval = 200;
 
                 // Hook up the Elapsed event for the timer. 
                 aTimer.Elapsed += OnTimedEvent;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace RandREng.Utilities.Logging
@@ -46,24 +47,30 @@ namespace RandREng.Utilities.Logging
 
 
 
-        override protected void Flush()
+        override protected async void Flush()
         {
             int count = _queue.Count;
-            StreamWriter sw = File.AppendText(LogFile);
+            if (!Directory.Exists(Path.GetDirectoryName(LogFile)))
+                Directory.CreateDirectory(Path.GetDirectoryName(LogFile));
+
+            using (StreamWriter sw = File.AppendText(LogFile))
             {
+                StringBuilder sb = new StringBuilder();
                 while (count > 0)
                 {
                     if (_queue.TryDequeue(out LogEntry entry))
                     {
-                        sw.Write(entry.ToString());
+                        sb.Append(entry.ToString());
                     }
                     --count;
                 }
+                await sw.WriteAsync(sb.ToString());
+                sb.Clear();
 #if !NETCORE
                 sw.Close();
-#else
-                sw.Dispose();
 #endif
+                sw.Dispose();
+
             }
         }
 

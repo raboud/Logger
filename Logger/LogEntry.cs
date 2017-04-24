@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RandREng.Utilities.Logging
 {
-    public class LogEntry
+    public struct LogEntry
     {
         public DateTime? Timestamp { get; private set; }
         public EnLogLevel Level { get; set; }
@@ -29,10 +29,13 @@ namespace RandREng.Utilities.Logging
             this.Message = message;
             this.Seperator = false;
             this.Exception = ex;
+            this.LineChar = ' ';
+            this.NumChar = 0;
         }
 
         public LogEntry(char lineChar, int num = LOG_SEPERATOR_WIDTH)
         {
+            this.Level = EnLogLevel.DEBUG;
             this.Timestamp = null;
             this.Message = null;
             this.Exception = null;
