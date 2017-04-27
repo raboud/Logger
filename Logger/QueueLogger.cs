@@ -16,9 +16,9 @@ namespace RandREng.Utilities.Logging
         abstract protected Mutex getMutex();
         abstract protected void Flush();
 
-        protected void startTimer()
+        protected void startTimer(Int32 duration = 10000)
         {
-            this._timer = new System.Timers.Timer(10000);
+            this._timer = new System.Timers.Timer(duration);
             this._timer.Elapsed += _timer_Elapsed;
             this._timer.Enabled = true;
             this._timer.AutoReset = true;
